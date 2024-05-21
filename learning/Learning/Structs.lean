@@ -69,13 +69,30 @@ def Point.modifyBoth (f : Float → Float) (p : Point) : Point :=
 
 -- TODO: Define a structure named RectangularPrism that contains the height,
 -- width, and depth of a rectangular prism, each as a Float.
+structure RectangularPrism where
+  width : Float
+  height : Float
+  depth : Float
 
 -- TODO: Define a function named volume : RectangularPrism → Float that computes the
 -- volume of a rectangular prism.
+def volume (width : Float) (height : Float) (depth : Float) : Float :=
+  width * height * depth
+
+#eval volume 1 2 3
 
 -- TODO: Define a structure named Segment that represents a line segment by its
 -- endpoints, and define a function length : Segment → Float that computes the
 -- length of a line segment. Segment should have at most two fields.
+
+structure Segment where
+  start : Point
+  finish : Point
+
+def length (segment : Segment) : Float := distance segment.start segment.finish
+
+def sqrtTwo := length (Segment.mk (Point.mk 0 0) (Point.mk 1 1))
+#eval sqrtTwo
 
 -- TODO: Which names are introduced by the declaration of RectangularPrism?
 
@@ -96,5 +113,7 @@ structure Book where
   author : String
   price : Float
 deriving Repr
+
+#eval Book.makeBook "Harry Potter" "J.K. Rowling" 9.99
 
 end Structs
