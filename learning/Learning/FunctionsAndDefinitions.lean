@@ -30,7 +30,38 @@ def maximum (n : Nat) (k : Nat) : Nat :=
 -- its first argument between its second and third arguments. joinStringsWith
 -- ", " "one" "and another" should evaluate to "one, and another".
 
--- TODO: What is the type of joinStringsWith ": "? Check your answer with Lean.
+def joinStringsWith (first: String) (second: String) (third: String) :=
+  String.append second (String.append first third)
 
--- TODO: Define a function volume with type Nat → Nat → Nat → Nat that computesÍ
+#eval joinStringsWith ", " "one" "and another"
+
+-- TODO: What is the type of joinStringsWith ": "? Check your answer with Lean.
+-- Res: Deberia ser String -> String -> String
+
+#check joinStringsWith ", "
+
+-- TODO: Define a function volume with type Nat → Nat → Nat → Nat that computes
 -- the volume of a rectangular prism with the given height, width, and depth.
+def volume (height : Nat) (width : Nat) (depth : Nat) :=
+  height * width * depth
+
+#eval volume 2 2 2
+
+
+-- Definiendo tipos
+
+-- Abreviando un tipo
+def Str : Type := String
+
+def aStr : Str := "This is a string."
+#eval aStr
+
+def NaturalNumber : Type := Nat
+def thirtyEight : NaturalNumber := (38 : Nat)
+
+-- Aunque es preferible
+abbrev N : Type := Nat
+
+-- Se marcan como reducibles
+def thirtyNine : N := 39
+#eval thirtyNine
