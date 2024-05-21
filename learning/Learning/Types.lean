@@ -1,3 +1,5 @@
+namespace Types
+
 -- Tipo explícito
 #eval (1 + 2 : Nat) -- Precisión arbitraria
 
@@ -5,3 +7,5 @@
 #eval 1 - 2 -- 0
 
 #eval (1 - 2 : Int) -- -1
+
+end Types

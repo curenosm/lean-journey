@@ -1,3 +1,5 @@
+namespace FunctionsAndDefinitions
+
 def hello := "Hello"
 #eval hello
 
@@ -18,7 +20,6 @@ def maximum (n : Nat) (k : Nat) : Nat :=
 
 #check add1
 #check (maximum) -- Lo trata como una expresión ordinaria
-
 -- Asociación a la derecha
 -- Nat → Nat → Nat === Nat → (Nat → Nat).
 
@@ -26,6 +27,7 @@ def maximum (n : Nat) (k : Nat) : Nat :=
 -- Ejercicios
 
 -- TODO: Define the function joinStringsWith with type
+
 -- String -> String -> String -> String that creates a new string by placing
 -- its first argument between its second and third arguments. joinStringsWith
 -- ", " "one" "and another" should evaluate to "one, and another".
@@ -65,3 +67,5 @@ abbrev N : Type := Nat
 -- Se marcan como reducibles
 def thirtyNine : N := 39
 #eval thirtyNine
+
+end FunctionsAndDefinitions

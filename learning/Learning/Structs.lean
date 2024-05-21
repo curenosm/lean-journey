@@ -1,3 +1,5 @@
+namespace Structs
+
 #check 1.2
 
 -- Los structs son tipos irreducibles
@@ -79,3 +81,20 @@ def Point.modifyBoth (f : Float → Float) (p : Point) : Point :=
 
 -- TODO: Which names are introduced by the following declarations of Hamster
 -- and Book? What are their types?
+
+structure Hamster where
+  name : String
+  fluffy : Bool
+
+instance : ToString Hamster where
+  toString : Hamster -> String
+    | { name := n, fluffy := f } => s!"\{ name := {n}, fluffy := {f} }"
+
+structure Book where
+  makeBook ::
+  title : String
+  author : String
+  price : Float
+deriving Repr
+
+end Structs

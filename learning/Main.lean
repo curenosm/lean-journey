@@ -1,4 +1,5 @@
 import «Learning»
+import Learning.Structs
 
 -- Defines a function that takes a name and produces a greeting.
 def getGreeting (name : String) := s!"Hello, {name}! Isn't Lean great?"
@@ -49,10 +50,42 @@ def b2 : Bool := false
 #check (5, 9).1     -- Nat
 #check (5, 9).2     -- Nat
 
+#eval Structs.Hamster.mk "Hello" true
+
+-- Abrir un import significa poder acceder directamente a sus elementos
+open Structs
+
+def hamster := { name := "Hello", fluffy := true : Hamster}
+
+def other : IO UInt32 := do
+  IO.println "hello"
+  IO.println "world"
+  return 0
+
+-- Podemos seguir definiendo un mismo namespace en otro lado del archivo
+-- e incluso en otro archivo
+namespace Foo
+  def a : Nat := 5
+  def f (x : Nat) : Nat := x + 7
+
+  def fa : Nat := f a
+end Foo
+
+#check Foo.a
+#check Foo.f
+
+namespace Foo
+  def ffa : Nat := f (f a)
+end Foo
+
+instance : ToString Hamster where
+  toString : Hamster -> String
+    | { name := n, fluffy := f } => s!"\{ name := {n}, fluffy := {f} }"
+
 -- The `main` function is the entry point of your program.
 -- Its type is `IO Unit` because it can perform `IO` operations (side effects).
 def main : IO Unit :=-- Define a list of names
-  let names := ["Sebastian", "Leo", "Daniel", toString m]
+  let names := ["Sebastian", "Leo", "Daniel", s!"{hamster}"]
 
   -- Map each name to a greeting
   let greetings := names.map getGreeting
