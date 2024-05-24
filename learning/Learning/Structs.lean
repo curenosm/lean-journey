@@ -116,4 +116,7 @@ deriving Repr
 
 #eval Book.makeBook "Harry Potter" "J.K. Rowling" 9.99
 
+-- \< y \>
+#eval (⟨"Harry Potter", "J.K", 9.99⟩ : Book)
+
 end Structs
