@@ -13,6 +13,6 @@ def special_array_i (arr : Array Nat) : IO Bool :=
 
 
 #eval special_array_i #[1, 2, 3, 4, 5]
-#eval special_array_i #[4,3,1,6]
+#eval special_array_i #[4, 3, 1, 6]
 
 end Leetcode
